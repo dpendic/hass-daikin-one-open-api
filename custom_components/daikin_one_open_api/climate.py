@@ -61,7 +61,6 @@ class DaikinOneOpenApiClimate(DaikinOneOpenApiEntity, ClimateEntity):
         self._attr_hvac_modes = [
             HVACMode.OFF,
             HVACMode.COOL,
-            HVACMode.DRY,
             HVACMode.HEAT,
             HVACMode.AUTO,
         ]
@@ -186,10 +185,6 @@ class DaikinOneOpenApiClimate(DaikinOneOpenApiEntity, ClimateEntity):
                 mode=ThermostatMode.OFF
             )
         if hvac_mode == HVACMode.COOL:
-            await self.coordinator.set_device_mode_and_setpoints(
-                mode=ThermostatMode.COOL
-            )
-        if hvac_mode == HVACMode.DRY:
             await self.coordinator.set_device_mode_and_setpoints(
                 mode=ThermostatMode.COOL
             )
